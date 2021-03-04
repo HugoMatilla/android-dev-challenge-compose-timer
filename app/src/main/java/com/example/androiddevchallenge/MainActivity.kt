@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
+import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -42,6 +43,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.Modifier.Companion
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -49,6 +51,7 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 lateinit var input: MutableState<TextFieldValue>
 lateinit var timer: CountDownTimer
 lateinit var counter: MutableState<Int>
+lateinit var max: MutableState<Int>
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,12 +92,22 @@ fun Buttons() {
 @Composable
 fun Clock() {
   counter = remember { mutableStateOf(0) }
+  max = remember { mutableStateOf(1) }
   Column(
-    modifier = Modifier.height(120.dp),
-    verticalArrangement = Arrangement.SpaceAround
+    modifier = Modifier.height(320.dp),
+    verticalArrangement = Arrangement.SpaceEvenly
   ) {
     Input()
-    Text(text = "Time ${counter.value}", style = MaterialTheme.typography.h3)
+    Text(
+      text = "Time ${counter.value}", style = MaterialTheme.typography.h3,
+      modifier = Modifier.fillMaxWidth(),
+      textAlign = Center
+
+    )
+    LinearProgressIndicator(
+      modifier = Modifier.fillMaxWidth(),
+      progress = (counter.value.toFloat() / max.value.toFloat())
+    )
   }
 }
 
@@ -104,8 +117,9 @@ fun Input() {
   TextField(
     value = input.value,
     onValueChange = { new ->
-      input.value = if (new.text.isBlank()) TextFieldValue(text = "0") else new
-      counter.value = input.value.text.toInt()
+      input.value = new
+      counter.value = if (new.text.isBlank()) 1 else new.text.toInt()
+      max.value = if (new.text.isBlank()) 1 else new.text.toInt()
     },
     singleLine = true,
     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
