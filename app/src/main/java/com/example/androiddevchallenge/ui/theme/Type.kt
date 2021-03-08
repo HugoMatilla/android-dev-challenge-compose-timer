@@ -17,27 +17,50 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.androiddevchallenge.R
 
 // Set of Material typography styles to start with
+val Sarpanch = FontFamily(
+    Font(R.font.sarpanch_bold),
+    Font(R.font.sarpanch_regular, FontWeight.Light),
+    Font(R.font.sarpanch_black, FontWeight.Bold)
+)
+
 val typography = Typography(
+    defaultFontFamily = Sarpanch,
+    h1 = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 96.sp
+    ),
+    h2 = TextStyle(
+        fontWeight = FontWeight.Light,
+    ),
+    h3 = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 86.sp
+    ),
+    h4 = TextStyle(
+        fontWeight = FontWeight.Bold,
+    ),
     body1 = TextStyle(
-        fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    )
-        /* Other default text styles to override
+        fontSize = 22.sp
+    ),
     button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
+        fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
     caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Light,
         fontSize = 12.sp
-    )
-    */
+    ),
+    body2 = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
+
+    ),
 )
