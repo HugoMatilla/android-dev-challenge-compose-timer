@@ -28,9 +28,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign.Center
-import androidx.compose.ui.text.style.TextAlign.End
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -43,8 +41,8 @@ fun Timer(timeLeft: MutableState<Int>) {
         Text(
             text = timeLeft.value.format(), style = MaterialTheme.typography.h1,
             modifier = Modifier.fillMaxWidth(),
-            textAlign = End,
-            color = Color.Blue
+            textAlign = Center,
+            color = MaterialTheme.colors.secondary
         )
         Column(
             modifier = Modifier.height(320.dp),

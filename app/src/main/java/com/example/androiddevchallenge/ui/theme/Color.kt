@@ -17,6 +17,7 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val pink100 = Color(0xFFf48fb1)
 val pink200 = Color(0xFFf48fb1)
 val pink700 = Color(0xFFc2185b)
 val pink900 = Color(0xFF880e4f)
