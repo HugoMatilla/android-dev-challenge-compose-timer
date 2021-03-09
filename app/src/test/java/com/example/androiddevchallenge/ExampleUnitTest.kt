@@ -26,12 +26,11 @@ import org.junit.Test
  */
 class ExampleUnitTest {
 
-  @Test
-  fun getAngleFromMillisMustBeOk() {
-    var res = getAngleFromMillis(1000, 1000)
-    assertEquals(res, 360f)
-    res = getAngleFromMillis(1000, 500)
-    assertEquals(res, 180f)
-  }
-
+    @Test
+    fun getAngleFromMillisMustBeOk() {
+        var res = getAngleFromMillis(1000, 1000)
+        assertEquals(res, 360f)
+        res = getAngleFromMillis(1000, 500)
+        assertEquals(res, 180f)
+    }
 }

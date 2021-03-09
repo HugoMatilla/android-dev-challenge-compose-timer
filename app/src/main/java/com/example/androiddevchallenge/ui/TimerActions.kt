@@ -29,35 +29,35 @@ lateinit var timer: CountDownTimer
 
 @Composable
 fun TimerActions(maxTime: MutableState<Int>, timeLeft: MutableState<Int>, running: MutableState<Boolean>) {
-  Row(
-    modifier = Modifier.fillMaxSize(),
-    horizontalArrangement = Arrangement.SpaceAround
-  ) {
-    Button(
-      enabled = !running.value,
-      onClick = { startTimer(maxTime, timeLeft); running.value = true }
-    ) { Text(text = "Start") }
-    Button(
-      enabled = running.value && timeLeft.value != 0,
-      onClick = {
-        timer.cancel(); maxTime.value = timeLeft.value / 1000; running.value = false
-      }
-    ) { Text(text = "Pause") }
-    Button(
-      onClick = { timer.cancel(); timeLeft.value = 0; running.value = false }
-    ) { Text(text = "Reset") }
-  }
+    Row(
+        modifier = Modifier.fillMaxSize(),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Button(
+            enabled = !running.value,
+            onClick = { startTimer(maxTime, timeLeft); running.value = true }
+        ) { Text(text = "Start") }
+        Button(
+            enabled = running.value && timeLeft.value != 0,
+            onClick = {
+                timer.cancel(); maxTime.value = timeLeft.value / 1000; running.value = false
+            }
+        ) { Text(text = "Pause") }
+        Button(
+            onClick = { timer.cancel(); timeLeft.value = 0; running.value = false }
+        ) { Text(text = "Reset") }
+    }
 }
 
 fun startTimer(maxTime: MutableState<Int>, timeLeft: MutableState<Int>) {
-  timer = object : CountDownTimer((maxTime.value) * 1_000L, 1) {
-    override fun onTick(millisUntilFinished: Long) {
-      timeLeft.value = ((millisUntilFinished) + 1000).toInt()
-    }
+    timer = object : CountDownTimer((maxTime.value) * 1_000L, 1) {
+        override fun onTick(millisUntilFinished: Long) {
+            timeLeft.value = ((millisUntilFinished) + 1000).toInt()
+        }
 
-    override fun onFinish() {
-      timeLeft.value = 0
+        override fun onFinish() {
+            timeLeft.value = 0
+        }
     }
-  }
-  timer.start()
+    timer.start()
 }

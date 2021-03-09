@@ -29,10 +29,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -51,34 +49,33 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 val clockSize = 320
 
 class MainActivity : AppCompatActivity() {
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContent {
-      MyApp()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MyApp()
+        }
     }
-  }
 }
 
 @Composable
 fun MyApp() {
-  val isDarkTheme = remember { mutableStateOf(false) }
-  val maxTime = remember { mutableStateOf(0) }
-  val timeLeft = remember { mutableStateOf(0) }
-  val running = remember { mutableStateOf(false) }
-  MyTheme(darkTheme = isDarkTheme.value) {
-    Surface() {
-      Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-      ) {
-        DarkModeToggle(isDarkTheme)
-        TimerWrapper(maxTime, timeLeft, running)
-        TimerActions(maxTime, timeLeft, running)
-
-      }
+    val isDarkTheme = remember { mutableStateOf(false) }
+    val maxTime = remember { mutableStateOf(0) }
+    val timeLeft = remember { mutableStateOf(0) }
+    val running = remember { mutableStateOf(false) }
+    MyTheme(darkTheme = isDarkTheme.value) {
+        Surface() {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                DarkModeToggle(isDarkTheme)
+                TimerWrapper(maxTime, timeLeft, running)
+                TimerActions(maxTime, timeLeft, running)
+            }
+        }
     }
-  }
 }
 
 @Composable fun DarkModeToggle(isDarkTheme: MutableState<Boolean>) {
@@ -87,59 +84,59 @@ fun MyApp() {
 //      isDarkTheme.value = !isDarkTheme.value
 //    }
 //  ) { Text(text = if (isDarkTheme.value) "go Light" else "go Dark") }
-  Row(
-    horizontalArrangement = Arrangement.End, modifier = Modifier
-      .fillMaxWidth()
-      .padding(8.dp)
-  ) {
-    OutlinedButton(onClick = { isDarkTheme.value = !isDarkTheme.value })
-    {
-      if (isDarkTheme.value)
-        Icon(R.drawable.ic_baseline_brightness_7_24)
-      else
-        Icon(R.drawable.ic_baseline_brightness_3_24)
+    Row(
+        horizontalArrangement = Arrangement.End,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        OutlinedButton(onClick = { isDarkTheme.value = !isDarkTheme.value }) {
+            if (isDarkTheme.value)
+                Icon(R.drawable.ic_baseline_brightness_7_24)
+            else
+                Icon(R.drawable.ic_baseline_brightness_3_24)
+        }
     }
-  }
 }
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TimerWrapper(maxTime: MutableState<Int>, timeLeft: MutableState<Int>, running: MutableState<Boolean>) {
-  Surface(
+    Surface(
 //    color = MaterialTheme.colors.surface,
 //    shape = MaterialTheme.shapes.medium,
-    modifier = Modifier.padding(32.dp)
-  ) {
-    Box {
-      ProgressCircle(maxTime, timeLeft)
-      AnimatedVisibility(visible = !running.value, enter = fadeIn(), exit = fadeOut()) {
-        Row(
-          horizontalArrangement = Arrangement.SpaceEvenly,
-          modifier = Modifier.fillMaxWidth()
-        ) {
+        modifier = Modifier.padding(32.dp)
+    ) {
+        Box {
+            ProgressCircle(maxTime, timeLeft)
+            AnimatedVisibility(visible = !running.value, enter = fadeIn(), exit = fadeOut()) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
 //          TimePicker(mutableStateOf(1), mutableStateOf(10))
-          TimePicker(maxTime, timeLeft)
+                    TimePicker(maxTime, timeLeft)
+                }
+            }
+            AnimatedVisibility(visible = running.value, enter = fadeIn(), exit = fadeOut()) {
+                Timer(timeLeft)
+            }
         }
-      }
-      AnimatedVisibility(visible = running.value, enter = fadeIn(), exit = fadeOut()) {
-        Timer(timeLeft)
-      }
     }
-  }
 }
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun LightPreview() {
-  MyTheme {
-    MyApp()
-  }
+    MyTheme {
+        MyApp()
+    }
 }
 
 @Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {
-  MyTheme(darkTheme = true) {
-    MyApp()
-  }
+    MyTheme(darkTheme = true) {
+        MyApp()
+    }
 }
