@@ -4,11 +4,11 @@
 
 ## :scroll: Description
 
-1 Minute Timer with dragging for selecting the number of seconds a a circular progressbar.
+1 Minute Timer with dragging for selecting the number of seconds, a circular progressbar, and dark mode option.
 
 ## :bulb: Motivation and Context
 
-I tried to learn a bit more about state and gestures in Jetpack Compose. I also wanted to try to make something using
+I tried to learn a bit more about State and Gestures in Jetpack Compose. I also wanted to try to make something using
 the Canvas.
 
 ## :camera_flash: Screenshots
