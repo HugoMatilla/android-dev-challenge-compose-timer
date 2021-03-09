@@ -25,42 +25,42 @@ import com.example.androiddevchallenge.R
 
 // Set of Material typography styles to start with
 val Sarpanch = FontFamily(
-    Font(R.font.sarpanch_bold),
-    Font(R.font.sarpanch_regular, FontWeight.Light),
-    Font(R.font.sarpanch_black, FontWeight.Bold)
+  Font(R.font.sarpanch_bold),
+  Font(R.font.sarpanch_regular, FontWeight.Light),
+  Font(R.font.sarpanch_black, FontWeight.Bold)
 )
 
 val typography = Typography(
-    defaultFontFamily = Sarpanch,
-    h1 = TextStyle(
-        fontWeight = FontWeight.Bold,
-        fontSize = 96.sp
-    ),
-    h2 = TextStyle(
-        fontWeight = FontWeight.Light,
-    ),
-    h3 = TextStyle(
-        fontWeight = FontWeight.Bold,
-        fontSize = 86.sp
-    ),
-    h4 = TextStyle(
-        fontWeight = FontWeight.Bold,
-    ),
-    body1 = TextStyle(
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp
-    ),
-    button = TextStyle(
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
-    ),
-    caption = TextStyle(
-        fontWeight = FontWeight.Light,
-        fontSize = 12.sp
-    ),
-    body2 = TextStyle(
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+  defaultFontFamily = Sarpanch,
+  h1 = TextStyle(
+    fontWeight = FontWeight.Bold,
+    fontSize = 96.sp
+  ),
+  h2 = TextStyle(
+    fontWeight = FontWeight.Light,
+  ),
+  h3 = TextStyle(
+    fontWeight = FontWeight.Bold,
+    fontSize = 86.sp
+  ),
+  h4 = TextStyle(
+    fontWeight = FontWeight.Bold,
+  ),
+  body1 = TextStyle(
+    fontWeight = FontWeight.Normal,
+    fontSize = 22.sp
+  ),
+  button = TextStyle(
+    fontWeight = FontWeight.Normal,
+    fontSize = 18.sp
+  ),
+  caption = TextStyle(
+    fontWeight = FontWeight.Light,
+    fontSize = 12.sp
+  ),
+  body2 = TextStyle(
+    fontWeight = FontWeight.Normal,
+    fontSize = 14.sp
 
-    ),
+  ),
 )

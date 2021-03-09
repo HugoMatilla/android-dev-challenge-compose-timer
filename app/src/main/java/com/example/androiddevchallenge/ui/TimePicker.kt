@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.clockSize
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
@@ -40,7 +41,7 @@ fun TimePicker(maxTime: MutableState<Int>, timeLeft: MutableState<Int>) {
     var input by remember { mutableStateOf(0f) }
     Box(
         modifier = Modifier
-            .height(320.dp)
+            .height(clockSize.dp)
             .scrollable(
                 orientation = Vertical,
                 state = rememberScrollableState { delta ->

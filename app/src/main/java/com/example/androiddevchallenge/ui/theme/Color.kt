@@ -27,3 +27,8 @@ val deepPurple300 = Color(0xFF9575cd)
 
 val brown100 = Color(0xFFefebe9)
 val brown950 = Color(0xFF1b0000)
+
+val blueGrey100 = Color(0xFFcfd8dc)
+val blueGrey700 = Color(0xFF37474f)
+
+

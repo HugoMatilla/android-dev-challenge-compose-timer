@@ -15,11 +15,23 @@
  */
 package com.example.androiddevchallenge
 
+import com.example.androiddevchallenge.ui.getAngleFromMillis
+import junit.framework.Assert.assertEquals
+import org.junit.Test
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-    // Add unit tests here
+
+  @Test
+  fun getAngleFromMillisMustBeOk() {
+    var res = getAngleFromMillis(1000, 1000)
+    assertEquals(res, 360f)
+    res = getAngleFromMillis(1000, 500)
+    assertEquals(res, 180f)
+  }
+
 }

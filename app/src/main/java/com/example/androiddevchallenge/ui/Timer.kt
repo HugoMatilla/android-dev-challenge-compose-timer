@@ -15,9 +15,7 @@
  */
 package com.example.androiddevchallenge.ui
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.LinearProgressIndicator
@@ -31,34 +29,35 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.clockSize
 
 @Composable
 fun Timer(timeLeft: MutableState<Int>) {
-    Box(
-        modifier = Modifier.height(320.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = timeLeft.value.format(), style = MaterialTheme.typography.h1,
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = Center,
-            color = MaterialTheme.colors.secondary
-        )
-        Column(
-            modifier = Modifier.height(320.dp),
-            verticalArrangement = Arrangement.Bottom
-        ) {
-            MillisProgressBar(timeLeft)
-        }
-    }
+  Box(
+    modifier = Modifier.height(clockSize.dp),
+    contentAlignment = Alignment.Center
+  ) {
+    Text(
+      text = timeLeft.value.format(),
+      style = MaterialTheme.typography.h1,
+      modifier = Modifier.fillMaxWidth(),
+      textAlign = Center,
+    )
+//    Column(
+//      modifier = Modifier.height(320.dp),
+//      verticalArrangement = Arrangement.Bottom
+//    ) {
+////      MillisProgressBar(timeLeft)
+//    }
+  }
 }
 
 @Composable
 fun MillisProgressBar(timeLeft: MutableState<Int>) {
-    LinearProgressIndicator(
-        modifier = Modifier.fillMaxWidth(),
-        progress = ((timeLeft.value.toFloat() % 1000) / 1000F)
-    )
+  LinearProgressIndicator(
+    modifier = Modifier.fillMaxWidth(),
+    progress = ((timeLeft.value.toFloat() % 1000) / 1000F)
+  )
 }
 
 // private fun Int.format() = "${this / 1000}:${this % 1000}".also { println("🚛 $this") }
@@ -67,5 +66,5 @@ private fun Int.format() = "${this / 1000}".also { println("🚛 $this") }
 @Preview("TimerPreview Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun TimerPreview() {
-    Timer(mutableStateOf(10))
+  Timer(mutableStateOf(10))
 }
