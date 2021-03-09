@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.clockSize
@@ -30,6 +29,7 @@ import com.example.androiddevchallenge.clockSize
 @Composable
 fun ProgressCircle(maxTime: MutableState<Int>, timeLeft: MutableState<Int>) {
     val surfaceColor = MaterialTheme.colors.background
+    val tickColor = MaterialTheme.colors.primary
 
     Canvas(
         modifier = Modifier.size(clockSize.dp)
@@ -37,7 +37,7 @@ fun ProgressCircle(maxTime: MutableState<Int>, timeLeft: MutableState<Int>) {
         val canvasWidth = this.size.width
         val canvasHeight = this.size.height
         drawArc(
-            brush = SolidColor(Color.Red),
+            brush = SolidColor(tickColor),
             startAngle = getAngleFromMillis(maxTime.value, timeLeft.value),
             sweepAngle = 2f,
             useCenter = true,

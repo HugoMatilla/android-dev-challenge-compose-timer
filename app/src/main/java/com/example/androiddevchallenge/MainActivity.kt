@@ -29,8 +29,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Icon
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Brightness2
+import androidx.compose.material.icons.filled.Brightness7
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -39,7 +43,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.androiddevchallenge.ui.Icon
 import com.example.androiddevchallenge.ui.ProgressCircle
 import com.example.androiddevchallenge.ui.TimePicker
 import com.example.androiddevchallenge.ui.Timer
@@ -79,11 +82,6 @@ fun MyApp() {
 }
 
 @Composable fun DarkModeToggle(isDarkTheme: MutableState<Boolean>) {
-//  Button(
-//    onClick = {
-//      isDarkTheme.value = !isDarkTheme.value
-//    }
-//  ) { Text(text = if (isDarkTheme.value) "go Light" else "go Dark") }
     Row(
         horizontalArrangement = Arrangement.End,
         modifier = Modifier
@@ -91,10 +89,13 @@ fun MyApp() {
             .padding(8.dp)
     ) {
         OutlinedButton(onClick = { isDarkTheme.value = !isDarkTheme.value }) {
-            if (isDarkTheme.value)
-                Icon(R.drawable.ic_baseline_brightness_7_24)
-            else
-                Icon(R.drawable.ic_baseline_brightness_3_24)
+            Icon(
+                imageVector = if (isDarkTheme.value)
+                    Icons.Filled.Brightness7
+                else
+                    Icons.Filled.Brightness2,
+                contentDescription = "Dark Mode Toggle"
+            )
         }
     }
 }

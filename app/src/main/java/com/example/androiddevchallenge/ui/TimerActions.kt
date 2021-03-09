@@ -20,7 +20,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons.Filled
+import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Restore
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
@@ -34,18 +38,24 @@ fun TimerActions(maxTime: MutableState<Int>, timeLeft: MutableState<Int>, runnin
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         Button(
-            enabled = !running.value,
-            onClick = { startTimer(maxTime, timeLeft); running.value = true }
-        ) { Text(text = "Start") }
-        Button(
             enabled = running.value && timeLeft.value != 0,
             onClick = {
                 timer.cancel(); maxTime.value = timeLeft.value / 1000; running.value = false
             }
-        ) { Text(text = "Pause") }
+        ) {
+            Icon(imageVector = Filled.Pause, "Pause")
+        }
+        Button(
+            enabled = !running.value,
+            onClick = { startTimer(maxTime, timeLeft); running.value = true }
+        ) {
+            Icon(imageVector = Filled.PlayArrow, "Start")
+        }
         Button(
             onClick = { timer.cancel(); timeLeft.value = 0; running.value = false }
-        ) { Text(text = "Reset") }
+        ) {
+            Icon(imageVector = Filled.Restore, "Reset")
+        }
     }
 }
 
